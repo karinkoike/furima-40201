@@ -133,13 +133,19 @@ GEM
     nio4r (2.7.0)
     nokogiri (1.16.0-x86_64-darwin)
       racc (~> 1.4)
+<<<<<<< Updated upstream
     nokogiri (1.16.0-x86_64-linux)
       racc (~> 1.4)
+=======
+>>>>>>> Stashed changes
     parallel (1.24.0)
     parser (3.2.2.4)
       ast (~> 2.4.1)
       racc
+<<<<<<< Updated upstream
     pg (1.5.4)
+=======
+>>>>>>> Stashed changes
     psych (5.1.2)
       stringio
     public_suffix (5.0.4)

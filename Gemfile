@@ -73,8 +73,11 @@ end
 
 group :development do
   gem 'rubocop', require: false
+<<<<<<< Updated upstream
 end
 
 group :production do
   gem 'pg'
+=======
+>>>>>>> Stashed changes
 end
