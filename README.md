@@ -1,24 +1,43 @@
-# README
+# furimaテーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+##　usersテーブル
+|Column            |Type  |Options                             |
+|------------------|------|------------------------------------|
+|nickname          |string|null: false                         |
+|email             |string|null: false, unique: true           |
+|encrypted_password|string|null: false                         |
+|name_kanji        |string|null: false                         |
+|name_kana         |string|null: false                         |
+|birthdate         |string|null: false                         |
 
-Things you may want to cover:
+##　productsテーブル
+|Column            |Type       |Options                       |
+|------------------|-----------|------------------------------|
+|product           |string     |null: false                   |
+|description       |text       |null: false                   |
+|user              |references |null: false, foreign_key: true|
 
-* Ruby version
+##　commentsテーブル 
+|Column            |Type       |Options                       |
+|------------------|-----------|------------------------------|
+|text              |text       |null: false                   |
+|product           |references |null: false, foreign_key: true|
+|user              |references |null: false, foreign_key: true|
 
-* System dependencies
+##　purchasesテーブル
+|Column            |Type       |Options                       |
+|------------------|-----------|------------------------------|
+|purchase_detail   |references |null: false                   |
+|payment           |string     |null: false                   |
+|user              |string     |null: false, foreign_key: true|
 
-* Configuration
+##　deliverysテーブル
+|Column            |Type       |Options                       |
+|------------------|-----------|------------------------------|
+|post              |string     |null: false                   |
+|prefectures       |string     |null: false                   |
+|city              |string     |null: false                   |
+|block             |string     |null: false                   |
+|building_name     |string     |null: false                   |
+|phone_number      |string     |null: false                   |
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
