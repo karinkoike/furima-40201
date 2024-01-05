@@ -78,5 +78,3 @@ end
 group :production do
   gem 'pg'
 end
-
-gem 'concurrent-ruby', '~> 1.2.2'
