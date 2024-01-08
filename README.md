@@ -1,55 +1,24 @@
-# furimaテーブル設計
+# README
 
-##　usersテーブル
-|Column            |Type   |Options                             |
-|------------------|-------|------------------------------------|
-|nickname          |string |null: false                         |
-|email             |string |null: false, unique: true           |
-|encrypted_password|string |null: false                         |
-|family_name       |string |null: false                         |
-|last_name         |string |null: false                         |
-|family_name_kana  |string |null: false                         |
-|last_name_kana    |string |null: false                         |
-|birthdate         |date   |null: false                         |
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-- has_many :purchase_histories
-- has_many :items
+Things you may want to cover:
 
-##　itemsテーブル
-|Column                     |Type       |Options                       |
-|---------------------------|-----------|------------------------------|
-|item_name                  |string     |null: false                   |
-|item_description           |text       |null: false                   |
-|category_id                |integer    |null: false                   |
-|item_state_id              |integer    |null: false                   |
-|delivery_charge_burden_id  |integer    |null: false                   |
-|prefecture_id              |integer    |null: false                   |
-|delivery_date_id           |integer    |null: false                   |
-|price                      |integer    |null: false                   |
-|user                       |references |null: false, foreign_key: true|
+* Ruby version
 
-- belongs_to :user
-- has_one :purchase_history
+* System dependencies
 
-##　purchase_historiesテーブル
-|Column            |Type       |Options                       |
-|------------------|-----------|------------------------------|
-|user              |references |null: false, foreign_key: true|
-|item              |references |null: false, foreign_key: true|
+* Configuration
 
-- belongs_to :user
-- belongs_to :item
-- has_one :delivery
+* Database creation
 
-##　deliveriesテーブル
-|Column            |Type        |Options                       |
-|------------------|------------|------------------------------|
-|post              |string      |null: false                   |
-|prefecture_id     |integer     |null: false                   |
-|city              |string      |null: false                   |
-|block             |string      |null: false                   |
-|building_name     |string      |                              |
-|phone_number      |string      |null: false                   |
-|purchase_history  |references  |null: false, foreign_key: true|
+* Database initialization
 
-- belongs_to :purchase_history
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
