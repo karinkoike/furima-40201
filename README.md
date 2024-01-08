@@ -16,17 +16,17 @@
 - has_many :items, through: :purchase_histories
 
 ##　itemsテーブル
-|Column                   |Type       |Options                       |
-|-------------------------|-----------|------------------------------|
-|image                    |text       |null: false                   |
-|item_name                |string     |null: false                   |
-|item_description         |text       |null: false                   |
-|category_id              |string     |null: false                   |
-|item_state_id            |string     |null: false                   |
-|delivery_charge_burden_id|string     |null: false                   |
-|prefectures_id           |string     |null: false                   |
-|delivery_date_id         |integer    |null: false                   |
-|price                    |integer    |null: false                   |
+|Column                     |Type       |Options                       |
+|---------------------------|-----------|------------------------------|
+|item_name                  |string     |null: false                   |
+|item_description           |text       |null: false                   |
+|category_id                |integer    |null: false                   |
+|item_state_id              |integer    |null: false                   |
+|delivery_charge_burden_id  |integer    |null: false                   |
+|prefectures_id             |integer    |null: false                   |
+|delivery_date_id           |integer    |null: false                   |
+|price                      |integer    |null: false                   |
+|user                       |references |null: false, foreign_key: true|
 
 - belongs_to :user
 - has_one :purchase_history
@@ -39,18 +39,17 @@
 
 - belongs_to :user
 - belongs_to :item
-- has_many :deliveries
+- has_one :delivery
 
 ##　deliveriesテーブル
 |Column            |Type        |Options                       |
 |------------------|------------|------------------------------|
-|post_id           |string      |null: false                   |
-|prefectures_id    |string      |null: false                   |
+|post              |string      |null: false                   |
+|prefectures_id    |integer     |null: false                   |
 |city              |string      |null: false                   |
-|block_id          |string      |null: false                   |
+|block             |string      |null: false                   |
 |building_name     |string      |                              |
-|phone_number_id   |string      |null: false                   |
-|user              |references  |null: false, foreign_key: true|
-|item              |references  |null: false, foreign_key: true|
+|phone_number      |string      |null: false                   |
+|purchase_history  |references  |null: false, foreign_key: true|
 
 - belongs_to :purchase_history
