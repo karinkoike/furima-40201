@@ -12,6 +12,10 @@
 |last_name_kana    |string |null: false                         |
 |date              |integer|null: false                         |
 
+- has_many :purchase_histories
+- has_many :items, through: :purchase_histories
+- has_many :deliverys
+
 ##　itemsテーブル
 |Column                |Type       |Options                       |
 |----------------------|-----------|------------------------------|
@@ -25,11 +29,18 @@
 |delivery_date         |integer    |null: false                   |
 |user                  |references |null: false, foreign_key: true|
 
-##　purchase_historyテーブル
+- belongs_to :user
+- has_many :purchase_histories
+- has_many :users, through: :purchase_histories
+
+##　purchase_historysテーブル
 |Column            |Type       |Options                       |
 |------------------|-----------|------------------------------|
 |user              |references |null: false, foreign_key: true|
 |item              |references |null: false, foreign_key: true|
+
+- belongs_to :user
+- belongs_to :item
 
 ##　deliverysテーブル
 |Column            |Type        |Options                       |
@@ -41,3 +52,4 @@
 |building_name     |string      |                              |
 |phone_number_id   |integer     |null: false                   |
 
+- belongs_to :user
