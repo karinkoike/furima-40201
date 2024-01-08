@@ -13,7 +13,7 @@
 |birthdate         |date   |null: false                         |
 
 - has_many :purchase_histories
-- has_many :items, through: :purchase_histories
+- has_many :items
 
 ##　itemsテーブル
 |Column                     |Type       |Options                       |
@@ -23,7 +23,7 @@
 |category_id                |integer    |null: false                   |
 |item_state_id              |integer    |null: false                   |
 |delivery_charge_burden_id  |integer    |null: false                   |
-|prefectures_id             |integer    |null: false                   |
+|prefecture_id              |integer    |null: false                   |
 |delivery_date_id           |integer    |null: false                   |
 |price                      |integer    |null: false                   |
 |user                       |references |null: false, foreign_key: true|
@@ -45,7 +45,7 @@
 |Column            |Type        |Options                       |
 |------------------|------------|------------------------------|
 |post              |string      |null: false                   |
-|prefectures_id    |integer     |null: false                   |
+|prefecture_id     |integer     |null: false                   |
 |city              |string      |null: false                   |
 |block             |string      |null: false                   |
 |building_name     |string      |                              |
