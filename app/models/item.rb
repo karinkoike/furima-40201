@@ -1,6 +1,12 @@
 class Item < ApplicationRecord
   belongs_to :user
   has_one_attached :image
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to_active_hash :category
+  belongs_to_active_hash :item_state
+  belongs_to_active_hash :delivery_charge_burden
+  belongs_to_active_hash :prefecture
+  belongs_to_active_hash :delivery_date
 
   validates :item_name, presence: true
   validates :item_description, presence: true
