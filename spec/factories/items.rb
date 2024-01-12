@@ -10,4 +10,8 @@ FactoryBot.define do
     price { 1000 }
     user 
   end
+
+  factory :item_without_user, parent: :item do
+    user { nil }
+  end
 end
