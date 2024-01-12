@@ -1,13 +1,13 @@
 FactoryBot.define do
   factory :item do
-    item_name { "MyString" }
-    item_description { "MyText" }
-    category_id { 1 }
-    item_state_id { 1 }
-    delivery_charge_burden_id { 1 }
-    prefecture_id { 1 }
-    delivery_date_id { 1 }
-    price { 1 }
-    user { nil }
+    item_name { "Sample Item" }
+    item_description { "This is a sample item description." }
+    category_id { 2 }
+    item_state_id { 2 }
+    delivery_charge_burden_id { 2 }
+    prefecture_id { 2 }
+    delivery_date_id { 2 }
+    price { 1000 }
+    user 
   end
 end
