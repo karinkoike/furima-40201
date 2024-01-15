@@ -12,7 +12,7 @@
 |last_name_kana    |string |null: false                         |
 |birthdate         |date   |null: false                         |
 
-- has_many :purchase_histories
+- has_many :orders
 - has_many :items
 
 ##　itemsテーブル
@@ -29,9 +29,9 @@
 |user                       |references |null: false, foreign_key: true|
 
 - belongs_to :user
-- has_one :purchase_history
+- has_one :order
 
-##　purchase_historiesテーブル
+##　ordersテーブル
 |Column            |Type       |Options                       |
 |------------------|-----------|------------------------------|
 |user              |references |null: false, foreign_key: true|
@@ -39,9 +39,9 @@
 
 - belongs_to :user
 - belongs_to :item
-- has_one :delivery
+- has_one :shipping_address
 
-##　deliveriesテーブル
+##　shipping_addressesテーブル
 |Column            |Type        |Options                       |
 |------------------|------------|------------------------------|
 |post              |string      |null: false                   |
@@ -50,6 +50,6 @@
 |block             |string      |null: false                   |
 |building_name     |string      |                              |
 |phone_number      |string      |null: false                   |
-|purchase_history  |references  |null: false, foreign_key: true|
+|order             |references  |null: false, foreign_key: true|
 
-- belongs_to :purchase_history
+- belongs_to :oder
