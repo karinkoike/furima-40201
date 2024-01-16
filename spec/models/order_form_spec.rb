@@ -57,13 +57,13 @@ RSpec.describe OrderForm, type: :model do
       it 'phone_numberが10桁未満だと保存できないこと' do
         @order_form.phone_number = '123456789'
         @order_form.valid?
-        expect(@order_form.errors.full_messages).to include('Phone number is too short (minimum is 10 characters)')
+        expect(@order_form.errors.full_messages).to include('Phone number is invalid')
       end
 
       it 'phone_numberが12桁以上だと保存できない' do
         @order_form.phone_number = '123456789012'
         @order_form.valid?
-        expect(@order_form.errors.full_messages).to include("Phone number is too long (maximum is 11 characters)")
+        expect(@order_form.errors.full_messages).to include("Phone number is invalid")
       end
     
       it 'phone_numberが英数字混合だと保存できない' do

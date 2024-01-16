@@ -1,9 +1,8 @@
 class OrdersController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create]
+  before_action :authenticate_user!
+  before_action :redirect_if_direct_access
+
   def index
-  end
-  
-  def new
     @order = Order.all
     @item = Item.find(params[:item_id])
     gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
@@ -23,6 +22,12 @@ class OrdersController < ApplicationController
     end
   end
 
+  def show
+    if !user_signed_in? || @item.orders.present?
+      redirect_to root_path
+    end
+  end
+
   private
 
   def order_form_params
@@ -37,5 +42,9 @@ class OrdersController < ApplicationController
       card: order_form_params[:token], 
       currency: 'jpy' 
     )
+  end
+
+  def redirect_if_direct_access
+    redirect_to root_path unless request.referer
   end
 end

@@ -3,22 +3,23 @@ class OrderForm
   attr_accessor :post, :prefecture_id, :city, :block, :building_name, :phone_number, :user_id, :item_id, :token, :price
 
   with_options presence: true do
-    validates :post, format: { with: /\A\d{3}-\d{4}\z/ }
+    validates :post
     validates :prefecture_id, numericality: { other_than: 1, message: "can't be blank" }
     validates :city
     validates :block
-    validates :phone_number, format: { with: /\A\d{10,11}\z/ }, length: { in: 10..11 }
+    validates :phone_number
     validates :user_id
     validates :item_id
     validates :token
   end
+  
+  validate :validate_post
   validate :phone_number_length
 
   def save
     item = Item.find(item_id)
     self.price = item.price
-    item.update!(sold_out: true)
-    
+
     return false unless valid?
 
     Order.transaction do
@@ -31,11 +32,19 @@ class OrderForm
 
   private
 
+  def validate_post
+    return if post.blank?
+
+    unless post.match?(/\A\d{3}-\d{4}\z/)
+      errors.add(:post, 'is invalid')
+    end
+  end
+
   def phone_number_length
     return if phone_number.blank?
 
-    unless phone_number.length == 10 || phone_number.length == 11
-      errors.add(:phone_number, "Phone number must be 10 or 11 digits")
+    unless phone_number.match?(/\A\d{10,11}\z/)
+      errors.add(:phone_number, 'is invalid')
     end
   end
 end
