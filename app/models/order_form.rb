@@ -19,7 +19,7 @@ class OrderForm
   def save
 
     Order.transaction do
-      order = Order.create!(user_id: user_id, item_id: item_id, price: price)
+      order = Order.create!(user_id: user_id, item_id: item_id)
       ShippingAddress.create(post: post, prefecture_id: prefecture_id, city: city, block: block, building_name: building_name, phone_number: phone_number)
     end
   rescue ActiveRecord::RecordInvalid
