@@ -22,9 +22,14 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @item = Item.find(params[:id])
   end
 
   def edit
+    if !user_signed_in? || current_user.id != @item.user_id || @item.orders.present?
+      redirect_to root_path
+    end
+
   end
 
   def update
@@ -42,12 +47,12 @@ class ItemsController < ApplicationController
 
   private
 
-  def item_params
-    params.require(:item).permit(:image, :item_name, :item_description, :category_id, :item_state_id, :delivery_charge_burden_id, :prefecture_id, :delivery_date_id, :price)
-  end
-
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def item_params
+    params.require(:item).permit(:image, :item_name, :item_description, :category_id, :item_state_id, :delivery_charge_burden_id, :prefecture_id, :delivery_date_id, :price)
   end
 
   def contributor_confirmation
