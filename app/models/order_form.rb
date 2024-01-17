@@ -17,10 +17,6 @@ class OrderForm
   validate :phone_number_length
 
   def save
-    item = Item.find(item_id)
-    self.price = item.price
-
-    return false unless valid?
 
     Order.transaction do
       order = Order.create!(user_id: user_id, item_id: item_id, price: price)
